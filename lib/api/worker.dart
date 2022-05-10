@@ -47,7 +47,7 @@ class Api {
       ),
     );
     request.headers.addAll(headers);
-    request.fields.addAll({"name": "test", "email": "test@gmail.com", "password": "12345"});
+    request.fields.addAll({"name": name, "email": email, "password": password});
     print("request: " + request.toString());
     var res = await request.send();
     print("This is response:" + res.toString());
