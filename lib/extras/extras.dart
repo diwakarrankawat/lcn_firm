@@ -18,6 +18,3 @@ class DataHolder {
     state = dataState.error;
   }
 }
-
-
-//InputDecoration = Decora

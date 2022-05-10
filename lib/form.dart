@@ -200,7 +200,7 @@ class _FormLayoutState extends State<FormLayout> {
                       setState(() {
                         date = dt;
                       });
-                      var xt = date != null ? "${date?.year}/${date?.month}/${date?.day}" : "";
+                      var xt = date != null ? "${date?.day}/${date?.month}/${date?.year}" : "";
                       _date.text = xt;
                       print(xt);
                     }
@@ -268,8 +268,7 @@ class _FormLayoutState extends State<FormLayout> {
       return;
     }
 
-    var g = await Api.submitDetails(
-        File(image?.path ?? ''), image?.name ?? "", _name.text, _pass1.text, gender.toString(), date?.toIso8601String() ?? "");
+    var g = await Api.submitDetails(File(image?.path ?? ''), image?.name ?? "", _name.text, _email.text, _pass1.text, gender.toString(), _date.text);
     if (g == 200) {
       Fluttertoast.showToast(msg: "Data Posted successfully");
     }

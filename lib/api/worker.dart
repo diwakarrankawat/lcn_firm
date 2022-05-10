@@ -30,7 +30,7 @@ class Api {
   }
 
   // Send details
-  static Future<int> submitDetails(File file, String filename, String name, String password, String gender, String date) async {
+  static Future<int> submitDetails(File file, String filename, String name, String email, String password, String gender, String date) async {
     ///MultiPart request
     var request = http.MultipartRequest(
       'POST',
@@ -39,7 +39,7 @@ class Api {
     Map<String, String> headers = {"Content-type": "multipart/form-data"};
     request.files.add(
       http.MultipartFile(
-        'file',
+        'image',
         file.readAsBytes().asStream(),
         file.lengthSync(),
         filename: filename,
@@ -47,7 +47,7 @@ class Api {
       ),
     );
     request.headers.addAll(headers);
-    request.fields.addAll({"name": "test", "email": "test@gmail.com", "password": "12345"});
+    request.fields.addAll({"name": name, "email": email, "password": "12345", "gender": gender, "dob": date, "user_status": "active"});
     print("request: " + request.toString());
     var res = await request.send();
     print("This is response:" + res.toString());
